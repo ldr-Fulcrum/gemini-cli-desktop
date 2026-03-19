@@ -365,6 +365,7 @@ impl Default for SessionManager {
     }
 }
 
+#[cfg(test)]
 fn mask_api_key(api_key: &str) -> String {
     const VISIBLE_CHARS: usize = 4;
     const MIN_MASKED_LEN: usize = VISIBLE_CHARS * 2 + 1;
