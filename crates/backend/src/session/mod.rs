@@ -365,6 +365,23 @@ impl Default for SessionManager {
     }
 }
 
+fn mask_api_key(api_key: &str) -> String {
+    const VISIBLE_CHARS: usize = 4;
+    const MIN_MASKED_LEN: usize = VISIBLE_CHARS * 2 + 1;
+
+    if api_key.is_empty() {
+        return "[empty]".to_string();
+    }
+
+    if api_key.len() <= MIN_MASKED_LEN {
+        return "*".repeat(api_key.len().max(4));
+    }
+
+    let prefix = &api_key[..VISIBLE_CHARS];
+    let suffix = &api_key[api_key.len() - VISIBLE_CHARS..];
+    format!("{prefix}...{suffix}")
+}
+
 // Helper function to send JSON-RPC request and read response
 async fn send_jsonrpc_request<E: EventEmitter>(
     request: &JsonRpcRequest,
