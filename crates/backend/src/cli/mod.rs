@@ -132,6 +132,12 @@ where
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RequestToolCallConfirmationResult {
+    pub id: String,
+    pub outcome: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CommandResult {
     pub command: String,
     pub success: bool,
