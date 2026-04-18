@@ -133,6 +133,7 @@ export const useMessageHandler = ({
       // Check if user is trying to use the disabled model.
       if (selectedModel === "gemini-2.5-flash-lite") {
         updateConversation(convId, (conv) => {
+          conv.isStreaming = false;
           conv.messages.push({
             id: (Date.now() + 1).toString(),
             parts: [
@@ -229,6 +230,7 @@ export const useMessageHandler = ({
         console.error("Failed to send message:", error);
 
         updateConversation(convId, (conv) => {
+          conv.isStreaming = false;
           conv.messages.push({
             id: (Date.now() + 1).toString(),
             parts: [{ type: "text", text: `❌ **Error:** ${error}` }],
