@@ -56,6 +56,13 @@ export interface API {
       model: string;
       yolo?: boolean;
     };
+    geminiAuth?: {
+      method: string;
+      api_key?: string;
+      vertex_project?: string;
+      vertex_location?: string;
+      yolo?: boolean;
+    };
   }): Promise<void>;
   get_process_statuses(): Promise<ProcessStatus[]>;
   kill_process(params: { conversationId: string }): Promise<void>;

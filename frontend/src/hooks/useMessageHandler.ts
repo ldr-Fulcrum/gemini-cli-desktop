@@ -222,6 +222,7 @@ export const useMessageHandler = ({
           conversationHistory: "", // Tauri auto-converts to conversation_history
           model: selectedModel,
           backendConfig: backendConfig, // Tauri auto-converts to backend_config
+          geminiAuth, // Tauri auto-converts to gemini_auth
         });
 
         // Refresh process statuses after sending message
